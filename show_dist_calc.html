@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<TITLE>Calculate distance between two coordinates</TITLE>
+<link rel="stylesheet" type="text/css" href="css/geo.css" />
+</HEAD>
+<BODY>
+<h1>Calculate the distance between your coordinates and the cache</h1>
+<P>Enter coordinates in 'ddd.dddd', 'ddd mm.mmm', or 'ddd mm ss' format.<BR>
+Sorry but no UTM yet. Include minus sign to indicate hemisphere. Leading zero<BR>
+not required.
+</P> 
+<FORM METHOD=post ACTION="do_dist_calc.php">
+<TABLE CELLSPACING=3 CELLPADDING=3>
+<TR>
+<TD VALIGN=TOP>
+<P><STRONG>Enter Latitude:</STRONG>(ex. 30.27458 or 30 16.475 or 30 16 28.5)<BR>
+<INPUT TYPE="text" NAME="lat1" SIZE=15 MAXLENGTH=15></P>
+<P><STRONG>Enter Longtitude:</STRONG>(ex. -97.74019 or -97 44.411 or -97 44 24.7)<BR>
+<INPUT TYPE="text" NAME="lon1" SIZE=15 MAXLENGTH=15></P>
+</TD>
+</TR>
+<TR>
+<TD>
+<P><INPUT TYPE="SUBMIT" NAME="submit" VALUE="Calculate"></P>
+</TD>
+</TR>
+</TABLE>
+</FORM>
+<HR>
+<address>&copy 2003 <A href = "mailto:banks@arlut.utexas.edu">RogerBanks</A><BR>
+<SCRIPT LANGUAGE="JavaScript">
+	document.write("<small>Last modified: " 
+	+ document.lastModified 
+	+"</small>");
+</SCRIPT>
+</address>
+<CENTER><A href="http://www.apple.com"><img src="images/logos/mac_logo.gif" border=0></A></CENTER>
+</BODY>
+</HTML> 
