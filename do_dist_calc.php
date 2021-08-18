@@ -1,4 +1,4 @@
-<?
+<?php
 
 // ported from: http://www.indo.com/distance/dist.pl
 define ("FEET_PER_MILE", 5280); //number of feet in a mile
@@ -6,11 +6,13 @@ define ("RADIUS", 3956); //assume spherical earth, radius in miles
 define ("RADCONVERT", .017453293); // pi/180
 define ("MINUTES_PER_DEGREE", 60);
 
+$msg = "";
+
 $lat2 = 30.4015667;
 $lon2 = -97.796933;
 
-$lat1 = parse_coords($_POST[lat1]);
-$lon1 = parse_coords($_POST[lon1]);
+$lat1 = parse_coords($_POST["lat1"]);
+$lon1 = parse_coords($_POST["lon1"]);
 
 $d = calc_distance($lat1, $lon1, $lat2, $lon2);
 $result = sprintf("%.3f", $d);
@@ -31,7 +33,10 @@ if ($d < .3) {
 
 function parse_coords($coord) {
 	 $coord = trim($coord);
-	 list($degrees, $minutes, $seconds) = preg_split("/[\s ]/ ", $coord);
+	 $coordArray = preg_split("/[\s ]/ ", $coord);
+	 $degrees = $coordArray[0] ?? 0;
+     $minutes = $coordArray[1] ?? 0;
+     $seconds = $coordArray[2] ?? 0;
 	 return dms2ddd($degrees, $minutes, $seconds);
 }
 
@@ -64,17 +69,19 @@ function calc_distance($lat1, $lon1, $lat2, $lon2) {
 </HEAD>
 <BODY>
 <P><strong>The distance from your coordinates to my cache is:</strong></P>
-<? echo "<P>$result $units<BR>$msg</P>"; ?>
+<?php echo "<P>$result $units<BR>$msg</P>"; ?>
 <HR>
-<address>&copy 2003 <A href = "mailto:banks@arlut.utexas.edu">RogerBanks</A><BR>
-<small>Last modified: <? echo date ("F d Y H:i:s.", filemtime("do_dist_calc.php")); ?>
+<address>&copy 2003 <A href = "mailto:roger_banks@mac.com">RogerBanks</A><BR>
+<small>Last modified: <?php echo date ("F d Y H:i:s.", filemtime("do_dist_calc.php")); ?>
 </address>
+<!--
 <TABLE width=100%>
 <TR>
-<TD align="left"><A href="http://www.php.net"><img src="images/logos/php_logo.gif" alt="php logo" border=0></A></TD>
-<TD align="center"><A href="http://www.barebones.com"><img src="images/logos/built_with_bbedit_01.gif" alt="bbedit logo" border=0></A></TD>
-<TD align="right"><A HREF="http://www.geocaching.com"><img src="images/logos/geocaching.gif" alt="Let's Go Geocaching" border=0></A></TD>
+<TD align="left"><A href="http://www.php.net"><img src="images/PHP.png" alt="php logo" width="200" height="100" border=0></A></TD>
+<TD align="center"><A href="http://www.barebones.com"><img src="images/bbedit.png" alt="bbedit logo" width="200" height="100" border=0></A></TD>
+<TD align="right"><A HREF="http://www.geocaching.com"><img src="images/geocaching.jpg" alt="Let's Go Geocaching" width="200" height="100" border=0></A></TD>
 </TR>
 </TABLE>
+-->
 </BODY>
 </HTML>
